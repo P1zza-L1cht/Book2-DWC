@@ -1,0 +1,25 @@
+<%= render 'userinfo', book: @book %>
+<!--right side-->
+    <div class="col-md-8 offset-md-1">
+      <!--index-->
+      <h2>Books</h2>
+      <table class="table table-hovor table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag @book.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %>
+            <br/><%= @book.user.name %>
+            </td>
+            <td><%= @book.title %></td>
+            <td><%= @book.body %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
