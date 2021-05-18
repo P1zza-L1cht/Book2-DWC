@@ -1,8 +1,17 @@
-<p id="notice"></p>
+<% if @new.errors.any? %>
+        <div id="error_explanation">
+         <h3><%= pluralize(@new.errors.count, "error") %> prohibited this obj from being saved:</h3>
+          <ul>
+            <% @new.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 <div class="container px-5 px-sm-0">
   <div class="row">
     <!--left side-->
-   <%= render 'books/userinfo',book: @book,user: current_user %>
+   <%= render 'books/userinfo',book: @new,user: current_user %>
     <!--right side-->
     <div class="col-md-8 offset-md-1">
       <!--index-->
