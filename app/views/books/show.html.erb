@@ -1,17 +1,12 @@
-<%= render 'userinfo', book: @book %>
-<!--right side-->
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <!--部分テンプレート-->
+    <%= render 'userinfo', book: @book %>
+    <!--right side-->
     <div class="col-md-8 offset-md-1">
       <!--index-->
-      <h2>Books</h2>
+      <h2>Book detail</h2>
       <table class="table table-hovor table-inverse">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td><%= attachment_image_tag @book.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %>
@@ -26,11 +21,13 @@
             <% end %>
             </td>
             <td><%= @book.body %></td>
-            <% if @user.id == current_user %>
-            <td><% link_to "edit",edit_book_path(@book), class:"btn btn-sm btn-success" %></td>
-            <td><% link_to "delete",book_path(@book), method: :delete, class:"btn btn-sm btn-danger" %></td>
+            <% if @book.user_id == current_user.id %>
+            <td><%= link_to "edit",edit_book_path(@book), class:"btn btn-sm btn-success" %></td>
+            <td><%= link_to "delete",book_path(@book), method: :delete, class:"btn btn-sm btn-danger" %></td>
             <% end %>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
+</div>
